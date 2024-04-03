@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@+id/nested_forecast_nav_graph">
+
+    <navigation
+        android:id="@+id/nested_forecast_nav_graph"
+        app:startDestination="@id/forecast_list">
+
+        <fragment
+            android:id="@+id/forecast_list"
+            android:name="com.example.roomyweather.ui.ForecastFragment"
+            android:label="@string/label_forecast_list">
+            <action
+                android:id="@+id/navigate_to_forecast_details"
+                app:destination="@+id/forecast_detail">
+                <argument
+                    android:name="forecastCity"
+                    app:argType="com.example.roomyweather.data.ForecastCity"
+                    app:nullable="true"/>
+                <argument
+                    android:name="forecastPeriod"
+                    app:argType="com.example.roomyweather.data.ForecastPeriod"
+                    app:nullable="true"/>
+            </action>
+        </fragment>
+
+        <fragment
+            android:id="@+id/forecast_detail"
+            android:name="com.example.roomyweather.ui.ForecastDetailActivityFragment"
+            android:label="@string/label_forecast_detail">
+            <argument
+                android:name="forecastCity"
+                app:argType="com.example.roomyweather.data.ForecastCity"
+                app:nullable="true"/>
+            <argument
+                android:name="forecastPeriod"
+                app:argType="com.example.roomyweather.data.ForecastPeriod"
+                app:nullable="true"/>
+        </fragment>
+
+    </navigation>
+
+    <fragment
+        android:id="@+id/saved_cities"
+        android:name="com.example.roomyweather.ui.SavedCitiesFragment"
+        android:label="@string/label_saved_cities"
+        tools:layout="@layout/saved_cities_fragment">
+        <action
+            android:id="@+id/navigate_to_forecast"
+            app:destination="@+id/nested_forecast_nav_graph">
+            <argument
+                android:name="city"
+                app:argType="com.example.roomyweather.data.SavedCity"
+                app:nullable="true"/>
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.roomyweather.ui.SettingsFragment"
+        android:label="@string/label_settings"/>
+</navigation>
