@@ -8,7 +8,7 @@ This Android weather application showcases the integration of the Room persisten
 - **Navigation Drawer**: Offers quick navigation between saved forecast locations.
 - **Jetpack Navigation**: Implements smooth screen transitions and organized navigation flow.
 - **User-Friendly City Management**: Allows easy addition and selection of cities from the navigation drawer.
-
+![App Behavior](screencap.gif)
 ## Getting Started
 ### Prerequisites
 - Android Studio
